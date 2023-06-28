@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 export default class Schedule {
     static get model() {
         return 'schedules';
@@ -5,6 +7,10 @@ export default class Schedule {
 
     static get schema() {
         return {
+            field: {
+                type: mongoose.SchemaTypes.ObjectId,
+                ref: 'fields',
+            },
             start: {
                 type: String,
                 required: true

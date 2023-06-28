@@ -9,15 +9,16 @@ export default class Booking {
         return {
             service: {
                 type: mongoose.SchemaTypes.ObjectId,
-                ref: 'services'
+                ref: 'services',
+                required: true
             },
-            day: {
-                type: mongoose.SchemaTypes.ObjectId,
-                ref: 'days'
+            datetime: {
+                type: Date,
+                required: true
             },
-            schedule: {
+            user: {
                 type: mongoose.SchemaTypes.ObjectId,
-                ref: 'schedules'
+                ref: 'users'
             }
         }   
     }

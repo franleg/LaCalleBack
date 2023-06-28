@@ -1,24 +1,30 @@
 import express from "express";
 import cors from 'cors';
-import CartsRouter from './routes/carts.router.js';
-import ServicesRouter from './routes/services.router.js';
+import passport from "passport";
+import initializePassport from './config/passport.config.js';
+import cookieParser from "cookie-parser";
+import BookingsRouter from './routes/bookings.router.js';
 import SessionsRouter from './routes/sessions.router.js';
-import SchedulesRouter from './routes/schedules.router.js';
 import AvailabilityRouter from './routes/availability.router.js'
 import UsersRouter from './routes/users.router.js';
+import config from "./config/config.js";
 
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = config.app.PORT;
 
-app.listen(8080, () => console.log(`Listening on ${PORT}`));
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-app.use('/api/carts', CartsRouter);
-app.use('/api/services', ServicesRouter);
+app.use(cookieParser());
+
+initializePassport();
+app.use(passport.initialize());
+
+app.use('/api/bookings', BookingsRouter);
 app.use('/api/sessions', SessionsRouter);
-app.use('/api/schedules', SchedulesRouter);
 app.use('/api/availability', AvailabilityRouter);
 app.use('/api/users', UsersRouter);

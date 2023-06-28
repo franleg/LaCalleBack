@@ -8,7 +8,7 @@ import config from '../config/config.js';
 
 export default class Dao {
     constructor() {
-        this.connection = mongoose.connect(`mongodb+srv://francolegnazzi:coderbackend@codercluster.skwuuph.mongodb.net/LaCalleDB?retryWrites=true&w=majority`, err => {
+        this.connection = mongoose.connect(`mongodb+srv://${config.mongo.USER}:${config.mongo.PWD}@codercluster.skwuuph.mongodb.net/${config.mongo.DB}?retryWrites=true&w=majority`, err => {
             if(err) console.log(err);
             else console.log('Connected to Atlas');
         })

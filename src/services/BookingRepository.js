@@ -10,7 +10,11 @@ export default class BookingRepository extends GenericRepository {
         return this.getBy(id).populate('service');
     }
 
-    updateById = (id, cart) => {
-        return this.updateBy(id, cart);
+    getByDate = (service, date) => {
+        return this.getBy({service, date:{ $gte: date, $lt: date + 1 }});
+    }
+
+    updateById = (id, booking) => {
+        return this.updateBy(id, booking);
     }
 }

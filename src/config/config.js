@@ -4,15 +4,17 @@ dotenv.config();
 
 export default {
     app: {
-        DOMAIN: process.env.DOMAIN
+        DOMAIN: process.env.DOMAIN,
+        PORT: process.env.PORT
     },
     mongo: {
         USER: process.env.MONGO_USER,
         PWD: process.env.MONGO_PASSWORD,
         DB: process.env.MONGO_DATABASE || ''
     },
-    session: {
-        SECRET: process.env.SESSION_SECRET,
+    jwt: {
+        SECRET: process.env.JWT_SECRET,
+        COOKIE: process.env.JWT_COOKIE,
     },
     admin: {
         NAME: process.env.ADMIN_NAME,

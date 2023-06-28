@@ -9,20 +9,20 @@ export default class User {
         return {
             first_name: String,
             last_name: String,
-            age: Number,
-            adress: String,
+            address: String,
             phone: String,
             email: String,
+            dni: Number,
+            age: Number,
             password: String,
-            avatar: String,
             role: {
                 type: String,
                 enum: ['user', 'admin'],
                 default: 'user'
             },
-            cart: {
+            booking: {
                 type: mongoose.SchemaTypes.ObjectId,
-                ref: 'carts',
+                ref: 'bookings',
             }
         }
     }

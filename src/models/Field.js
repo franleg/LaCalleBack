@@ -1,5 +1,3 @@
-import mongoose from "mongoose";
-
 export default class Field {
     static get model() {
         return 'fields';
@@ -7,7 +5,10 @@ export default class Field {
 
     static get schema() {
         return {
-            title: String,
+            type: {
+                type: String,
+                enum: ['Cancha de 5', 'Cancha de 8'],
+            },
             price: Number,
             description: String,
         }

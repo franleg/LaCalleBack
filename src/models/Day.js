@@ -15,7 +15,11 @@ export default class Day {
                         ref: 'schedules'
                     }
                 }
-            ]
+            ],
+            field: {
+                type: mongoose.SchemaTypes.ObjectId,
+                ref: 'fields',
+            }
         }
     }
 }

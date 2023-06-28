@@ -3,7 +3,7 @@ import availabilityController from '../controllers/availability.controller.js';
 
 const router = Router();
 
-// GET SCHEDULES AT DAY
-router.post('/', availabilityController.addSchedulesAtDay);
+// GET AVAILABLE SCHEDULES
+router.get('/', availabilityController.getSchedules);
 
 export default router;
