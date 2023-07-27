@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import Booking from './Booking.js';
-import Day from './Day.js';
+import Promotion from './Promotion.js';
 import Field from './Field.js';
 import Schedule from './Schedule.js';
 import User from './User.js';
@@ -20,14 +20,14 @@ export default class Dao {
             }
         }
         const bookingSchema = mongoose.Schema(Booking.schema, timestamps);
-        const daySchema = mongoose.Schema(Day.schema, timestamps);
+        const promotionSchema = mongoose.Schema(Promotion.schema, timestamps);
         const fieldSchema = mongoose.Schema(Field.schema, timestamps);
         const scheduleSchema = mongoose.Schema(Schedule.schema, timestamps);
         const userSchema = mongoose.Schema(User.schema, timestamps);
 
         this.models = {
             [Booking.model]: mongoose.model(Booking.model, bookingSchema),
-            [Day.model]: mongoose.model(Day.model, daySchema),
+            [Promotion.model]: mongoose.model(Promotion.model, promotionSchema),
             [Field.model]: mongoose.model(Field.model, fieldSchema),
             [Schedule.model]: mongoose.model(Schedule.model, scheduleSchema),
             [User.model]: mongoose.model(User.model, userSchema),
@@ -36,7 +36,7 @@ export default class Dao {
 
     getAll = (params, entity) => {
         if(!this.models[entity]) throw new Error('La entidad no existe');
-        return this.models[entity].find(params).lean();
+        return this.models[entity].find(params).lean().exec();
     }
 
     findOne = (params, entity) => {

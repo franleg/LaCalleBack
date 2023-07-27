@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import bookingsController from '../controllers/bookings.controller.js';
+//import verifyMercadoPago from '../middlewares/verifyMercadoPago.js';
 
 const router = Router();
 

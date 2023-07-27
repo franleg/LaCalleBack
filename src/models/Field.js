@@ -5,12 +5,15 @@ export default class Field {
 
     static get schema() {
         return {
-            type: {
+            name: {
                 type: String,
                 enum: ['Cancha de 5', 'Cancha de 8'],
+                required: true,
             },
-            price: Number,
-            description: String,
+            price: {
+                type: Number,
+                required: true
+            }
         }
     }
 }

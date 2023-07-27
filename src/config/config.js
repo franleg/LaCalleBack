@@ -21,5 +21,8 @@ export default {
         LASTNAME: process.env.ADMIN_LASTNAME,
         EMAIL: process.env.ADMIN_EMAIL,
         PWD: process.env.ADMIN_PASSWORD,
+    },
+    mercadoPago: {
+        access_token: process.env.MERCADOPAGO_ACCESS_TOKEN
     }
 }

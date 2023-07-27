@@ -27,12 +27,12 @@ const login = (req, res) => {
             role: req.user.role
         }
 
-        const token = jwt.sign(loginUser, config.jwt.SECRET, {expiresIn: 120});
+        const token = jwt.sign(loginUser, config.jwt.SECRET, {expiresIn: '1h'});
 
         const expirationDate = new Date();
-        expirationDate.setMinutes(expirationDate.getMinutes() + 2);
+        expirationDate.setHours(expirationDate.getHours() + 1);
 
-        res.cookie(config.jwt.COOKIE, token, {maxAge: 120000, httpOnly: true}).send({
+        res.cookie(config.jwt.COOKIE, token, {maxAge: 3600000, httpOnly: true}).send({
             status:"success", 
             payload: loginUser, token,
             expiresAt: expirationDate

@@ -6,13 +6,21 @@ export default class BookingRepository extends GenericRepository {
         super(dao, Booking.model);
     }
 
-    getByIdAndPopulate = (id) => {
-        return this.getBy(id).populate('service');
+    getReservationByTime= (field, date, time) => {
+        return this.getBy({field, date, time});
     }
 
-    getByDate = (service, date) => {
-        return this.getBy({service, date:{ $gte: date, $lt: date + 1 }});
+    getReservationsByDate= (date) => {
+        return this.getAll({date});
     }
+
+    getReservations = (field, date) => {
+        return this.getAll({ field, date });
+    }
+
+    getFixedReservations(field, date) {
+        return this.getAll({ field, date, isFixed: true });
+      }
 
     updateById = (id, booking) => {
         return this.updateBy(id, booking);
