@@ -3,10 +3,7 @@ import usersController from '../controllers/users.controller.js';
 
 const router = Router();
 
-// GET USERS 
-/* router.get('/', usersController.getUsers); */
-
-// GET USER BY ID 
-/* router.get('/:idUser', usersController.getUserById); */
+// GET USER BY EMAIL
+router.get('/', usersController.getUserByEmail);
 
 export default router;

@@ -20,7 +20,7 @@ const login = (req, res) => {
             last_name: req.user.last_name,
             email: req.user.email,
             phone: req.user.phone,
-            adress: req.user.address,
+            address: req.user.address,
             age: req.user.age,
             dni: req.user.dni,
             booking: req.user.booking,
@@ -35,7 +35,8 @@ const login = (req, res) => {
         res.cookie(config.jwt.COOKIE, token, {maxAge: 3600000, httpOnly: true}).send({
             status:"success", 
             payload: loginUser, token,
-            expiresAt: expirationDate
+            expiresAt: expirationDate,
+            loginUser
         });
 
     } catch (error) {

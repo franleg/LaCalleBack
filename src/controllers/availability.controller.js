@@ -27,6 +27,7 @@ const getSchedules = async (req, res) => {
         const field5OccupiedCount = existingReservations.filter(reservation =>
           reservation.field === 'Cancha de 5' && reservation.time.start === `${hour}:00`
         ).length;
+
         const areField5Occupied = field5OccupiedCount >= 1 && field5OccupiedCount <= 3;
 
         if (

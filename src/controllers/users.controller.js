@@ -10,10 +10,10 @@ const getUsers = async (req, res) => {
     }
 }
 
-const getUserById = async (req, res) => {
+const getUserByEmail = async (req, res) => {
     try {
-        const { idUser } = req.params;
-        const user = await userService.getUserById(idUser);
+        const { email } = req.query;
+        const user = await userService.getByEmail(email);
         if (!user) return res.status(404).send({status: 'error', error: 'Usuario no encontrado'})
         res.send({status: 'success', payload: user});
     } catch (error) {
@@ -24,5 +24,5 @@ const getUserById = async (req, res) => {
 
 export default {
     getUsers,
-    getUserById,
+    getUserByEmail,
 }
